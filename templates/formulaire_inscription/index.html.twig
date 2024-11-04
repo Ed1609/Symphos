@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div class="container mt-5" style="padding: 150px;">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <div>
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

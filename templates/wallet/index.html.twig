@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recharge Compte{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap4/bootstrap.min.css') }}">
+    <link href="{{ asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/themify-icons/themify-icons.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/jquery-ui-1.12.1.custom/jquery-ui.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/categories_styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/categories_responsive.css') }}">
+{% endblock %}
+
+{% block body %}
+    <!-- En-tête de page -->
+    <div class="container-fluid page-header py-5">
+        <h1 class="display-3 text-center">Recharge</h1>
+    </div>
+
+    <!-- Formulaire de paiement -->
+    <div class="super_container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <form action="{{ path('recharge.compte') }}" method="POST">
+
+                    <div class="form-group">
+                        <label for="card_number">Numéro de telephone</label>
+                        <input type="phone" class="form-control" id="numero" name="numero" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="card_number">Montant de recharge</label>
+                        <input type="number" class="form-control" id="montant" name="montant" required>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Recharger</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

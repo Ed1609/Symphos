@@ -1,0 +1,219 @@
+<div class="container single_product_container" style="margin-top: 180px;">
+    <div class="row">
+        <div class="col">
+            <div class="breadcrumbs d-flex flex-row align-items-center">
+                <ul class="breadcrumbs d-flex flex-row align-items-center mb-3">
+                    <li><a href="{{ path('Accueil') }}">Accueil</a></li>
+                    <li><a href="{{ path('all-product') }}"><i class="fa fa-angle-right" aria-hidden="true"></i>{{ instance.typeProduit }}</a></li>
+                    <li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Produit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-7">
+            <div class="single_product_pics">
+                <div class="row">
+                    <div class="col-lg-3 order-lg-1 order-2">
+                        <div class="single_product_thumbnails">
+                            <ul class="list-unstyled">
+                                <li><img src="{{ instance.ImageUrlDump1 }}" alt="{{ instance.libele }}" data-image="{{ instance.ImageUrl4 }}"></li>
+                                <li class="active"><img src="{{ instance.ImageUrlDump2 }}" alt="{{ instance.libele }}" data-image="{{ instance.ImageUrl5 }}"></li>
+                                <li><img src="{{ instance.ImageUrlDump3 }}" alt="{{ instance.libele }}" data-image="{{ instance.ImageUrl6 }}"></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 order-lg-2 order-1">
+                        <div class="single_product_image">
+                            <div class="single_product_image_background" style="background-image:url('{{ asset('images/single_2.jpg') }}')"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="product_details">
+                <div class="product_details_title">
+                    <h2>{{ instance.libele }}</h2>
+                    <p>{{ instance.description1 }}</p>
+                </div>
+                <div class="free_delivery d-flex align-items-center justify-content-center">
+                    <span class="ti-truck"></span><span>Free delivery</span>
+                </div>
+                <div class="original_price text-muted">${{ instance.prix }}</div>
+                <div class="product_price">${{ instance.discountPrice }}</div>
+                
+                <!-- Alignement des étoiles sur une ligne -->
+                <ul class="star_rating list-inline">
+                    <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
+                    <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
+                    <li class="list-inline-item"><i class="fa fa-star" aria-hidden="true"></i></li>
+                    <li class="list-inline-item"><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                    <li class="list-inline-item"><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                </ul>
+                
+                <div class="product_color">
+                    <span>Select Color:</span>
+                    <ul class="list-inline">
+                        <li class="list-inline-item" style="background: #e54e5d"></li>
+                        <li class="list-inline-item" style="background: #252525"></li>
+                        <li class="list-inline-item" style="background: #60b3f3"></li>
+                    </ul>
+                </div>
+                <div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
+                    <span>Quantity:</span>
+                    <div class="quantity_selector d-flex align-items-center">
+                        <span class="minus"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                        <span id="quantity_value" class="mx-2">1</span>
+                        <span class="plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="red_button add_to_cart_button">
+                        <a id="add_to_cart_link" href="{{ path('add_card', {'productId': instance.id, 'quantity': 1, 'clientId': 2}) }}">add to cart</a>
+                    </div>
+                    <div class="product_favorite d-flex flex-column align-items-center justify-content-center"></div>
+                </div>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <script>
+                    $(document).ready(function() {
+                        var quantity = 1;
+                        var price = {{ instance.prix }};
+                        var productId = {{ instance.id }};
+                
+                        function updateCartLink() {
+                            var total = quantity * price;
+                            var url = "{{ path('add_card', {'productId': instance.id, 'quantity': '__quantity__', 'clientId': 2}) }}";
+                            url = url.replace('__quantity__', quantity);
+                            $('#add_to_cart_link').attr('href', url);
+                        }
+                
+                        $('.plus').click(function() {
+                            quantity++;
+                            $('#quantity_value').text(quantity);
+                            updateCartLink();
+                        });
+                
+                        $('.minus').click(function() {
+                            if (quantity > 1) {
+                                quantity--;
+                                $('#quantity_value').text(quantity);
+                                updateCartLink();
+                            }
+                        });
+                
+                        updateCartLink(); // Initial update
+                    });
+                </script>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tabs -->
+<div class="tabs_section_container container mt-4">
+    <div class="tabs_container">
+        <ul class="tabs nav nav-tabs d-flex flex-sm-row flex-column align-items-center justify-content-center">
+            <li class="tab active" data-active-tab="tab_1">
+                <a class="nav-link active" data-toggle="tab" href="#tab_1">Description</a>
+            </li>
+            <li class="tab" data-active-tab="tab_2">
+                <a class="nav-link" data-toggle="tab" href="#tab_2">Information Additionnelle</a>
+            </li>
+            <li class="tab" data-active-tab="tab_3">
+                <a class="nav-link" data-toggle="tab" href="#tab_3">Avis et Commentaires</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tab-content mt-3">
+        <!-- Tab Description -->
+        <div id="tab_1" class="tab-pane fade show active">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="tab_title">
+                        <h4>Description</h4>
+                    </div>
+                    <div class="tab_text_block">
+                        <h2>{{ instance.libele }}</h2>
+                        <p>{{ instance.description2 }}</p>
+                    </div>
+                    <div class="tab_image">
+                        <img src="{{ instance.ImageUrl1 }}" alt="{{ instance.libele }}">
+                    </div>
+                    <div class="tab_text_block">
+                        <h2>{{ instance.libele }}</h2>
+                        <p>{{ instance.description3 }}</p>
+                    </div>
+                </div>
+                <div class="col-lg-5 offset-lg-2">
+                    <div class="tab_image">
+                        <img src="{{ instance.ImageUrl2 }}" alt="{{ instance.libele }}">
+                    </div>
+                    <div class="tab_text_block">
+                        <h2>{{ instance.libele }}</h2>
+                        <p>{{ instance.description4 }}</p>
+                    </div>
+                    <div class="tab_image desc_last">
+                        <img src="{{ instance.ImageUrl3 }}" alt="{{ instance.libele }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Additional Info -->
+        <div id="tab_2" class="tab-pane fade">
+            <div class="row">
+                <div class="col">
+                    <div class="tab_title additional_info_title">
+                        <h4>Information Additionnelle</h4>
+                    </div>
+                    <p>Couleur disponible: <span>{{ instance.couleur }}</span></p>
+                    <p>Taille disponible: <span>{{ instance.taille }}</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Reviews -->
+        <div id="tab_3" class="tab-pane fade">
+            <div class="row">
+                <!-- User Reviews -->
+                <div class="col-lg-6">
+                    <div class="reviews">
+                        <h4>Reviews</h4>
+                        <!-- Example review -->
+                        <div class="review">
+                            <div class="review_user">
+                                <h5>John Doe</h5>
+                                <span>5 stars</span>
+                            </div>
+                            <p>This is a review of the product.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Add Review -->
+                <div class="col-lg-6">
+                    <div class="add_review">
+                        <form id="review_form" action="" method="post">
+                            <div class="form-group">
+                                <h1>Add Review</h1>
+                                <input id="review_name" class="form-control" type="text" name="name" placeholder="Name*" required>
+                            </div>
+                            <div class="form-group">
+                                <input id="review_email" class="form-control" type="text" name="email" placeholder="Email*" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="review_message" class="form-control" name="message" placeholder="Your Review*" rows="4" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Submit Review</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

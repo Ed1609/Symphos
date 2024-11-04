@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit {{category}}{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap4/bootstrap.min.css') }}">
+    <link href="{{ asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/themify-icons/themify-icons.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/jquery-ui-1.12.1.custom/jquery-ui.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/categories_styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/categories_responsive.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="super_container">
+    <!-- Sidebar and Products Rendering -->
+    <div class="container product_section_container">
+        <div class="row">
+            <div class="col product_section clearfix">
+                <div class="breadcrumbs d-flex flex-row align-items-center">
+                    <ul>
+                        <li><a href="{{ path('Accueil') }}">Accueil</a></li>
+                        <li class="active">
+                            <a href="{{ path('all-product', {'category': category}) }}">
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>{{ category | capitalize }}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Product List -->
+                <div class="product-grid">
+                    {% for product in products %}
+                        <div class="product-item men">
+                            <div class="product discount product_filter">
+                                <div class="product_image">
+                                    <img src="{{ asset(product.ImageUrl) }}" alt="{{ product.libele }}">
+                                </div>
+                                <div class="product_info">
+                                    <h6 class="product_name">
+                                        <a href="{{ path('product.show', {'slug':product.slug,'id': product.id}) }}">{{ product.libele }}</a>
+                                    </h6>
+                                    <div class="product_price">{{ product.discountPrice ? product.discountPrice : product.prix }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Pagination -->
+                <div class="pages d-flex flex-row align-items-center">
+                    <div class="page_current">
+                        <span>{{ pageActuelle }}</span>
+                        <ul class="page_selection">
+                            {% for i in 1..nombreDePages %}
+                                <li><a href="{{ path('all-product', {'category': category, 'page': i}) }}">{{ i }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="page_total"><span>de</span> {{ nombreDePages }}</div>
+                    {% if pageActuelle < nombreDePages %}
+                        <div class="page_next">
+                            <a href="{{ path('all-product', {'category': category, 'page': pageActuelle + 1}) }}">
+                                <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('styles/bootstrap4/popper.js') }}"></script>
+    <script src="{{ asset('styles/bootstrap4/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('plugins/Isotope/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
+    <script src="{{ asset('plugins/easing/easing.js') }}"></script>
+    <script src="{{ asset('plugins/jquery-ui-1.12.1.custom/jquery-ui.js') }}"></script>
+    <script src="{{ asset('js/categories_custom.js')}}"></script>
+{% endblock %}

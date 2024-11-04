@@ -1,0 +1,94 @@
+{# templates/profil/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+    <div class="container-fluid page-header py-5" style="margin-top:1em;">
+    </div>
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Informations Personnelles</h4>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Nom:</strong> {{ user.name }}</p>
+                        <p><strong>Prenom:</strong> {{ user.firstname }}</p>
+                        <p><strong>Email:</strong> {{ user.email }}</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Mon Portefeuille</h4>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Solde:</strong> {{wallet.solde}} FCFA</p>
+                        <p><strong>Derniere transaction: </strong>{{date}}</p>
+                        <a href="{{ path('app.wallet')}}" class="shop_now_button" role="button">Recharger</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Infos de livraison</h4>
+                    </div>
+                    <form action="{{ path('livraison') }}" method="POST">
+                        <div class="card-body">
+                            <p><strong>Fréquence de livraison:</strong> 
+                                <input type="date" name="frequence" id="frequence" value="{{ parametre.FrequenceLivraison ?? 'Non défini' }}">
+                            </p>
+                            <p><strong>Article à livrer:</strong> 
+                                <input type="text" name="produit" id="produit" value="{{ parametre.produit ?? 'Non défini' }}" required>
+                            </p>
+                            <p><strong>Adresse de livraison:</strong> 
+                                <input type="text" name="adresse" id="adresse" value="{{ parametre.AdresseUtilisateur ?? 'Non défini' }}" required>
+                            </p>
+                            <button type="submit" class="red_button shop_now_button">Mettre à jour</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Historique des commandes</h4>
+                    </div>
+                    <div class="card-body">
+                        {% if orders|length > 0 %}
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Produit</th>
+                                        <th scope="col">Prix</th>
+                                        <th scope="col">Quantité</th>
+                                        <th scope="col">Total</th>
+                                        <th scope="col">Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for order in orders %}
+                                        <tr>
+                                            <td>{{ order.libele }}</td>
+                                            <td>{{ order.prix }} FCFA</td>
+                                            <td>{{ order.quantity }}</td>
+                                            <td>{{ order.total_transaction }} FCFA</td>
+                                            <td>{{ order.created_at|date('d/m/Y') }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <p>Aucune commande passée.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="{{ path('app_logout') }}">Déconnexion</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/bootstrap4/bootstrap.min.css') }}">
+    <link href="{{ asset('plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/themify-icons/themify-icons.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/jquery-ui-1.12.1.custom/jquery-ui.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/categories_styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/categories_responsive.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <!-- En-tête de page -->
+    <div class="container-fluid page-header py-5">
+        <!-- Contenu de l'en-tête -->
+    </div>
+
+    <!-- Tableau du panier -->
+    <div class="super_container" id="cart-section">
+        <div class="container py-5">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Image</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prix</th>
+                            <th scope="col">Quantité</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart %}
+                            <tr>
+                                <td><img src="{{ item.productImage }}" class="img-fluid" style="width: 80px; height: 80px;" alt=""></td>
+                                <td>{{ item.productLabel }}</td>
+                                <td>{{ item.productPrice | number_format(0, ',', ' ') }} FCFA</td>
+                                <td>{{ item.totalQuantity }}</td>
+                                <td>{{ item.productPrice * item.totalQuantity | number_format(0, ',', ' ') }} FCFA</td>
+                                <td>
+                                    <button data-p_r="{{ item.productId }}" data-tq_te="1" data-thskd="delete" class="delete btn-danger btn-sm">Supprimer</button>
+                                </td>
+                            </tr>
+
+                        {% else %}
+                            <tr>
+                                <td colspan="6">Votre panier est vide.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                    <div>
+                        <td><strong>Total :<span> </span> {{ total | number_format(0, ',', ' ') }} FCFA</strong></td>
+                    </div>
+                <div>
+                    {% if total != 0 %}
+                        {% if wallet > total %}
+                        <a href="{{ path('index.payment') }}" class="btn btn-primary">Passer à la caisse</a>
+                        {% endif %}
+                        <a href="{{ path('index.payment') }}" class="btn btn-primary">Passer à la caisse</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block javascripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+                $(document).ready(function() {
+                    // Gestionnaire d'événements pour le bouton "Supprimer du panier"
+                    $('.delete').on('click', function() {
+                        var id_produit = $(this).data('p_r');
+                        var quantite = $(this).data('tq_te');
+
+                        console.log("ID Produit:", id_produit);
+                        console.log("Quantité:", quantite);
+
+                        // Effectuer une requête AJAX pour supprimer le produit du panier
+                        $.ajax({
+                            url: '/delete-product/' + id_produit, // URL du script serveur qui gère la suppression du panier
+                            method: 'POST', // Méthode HTTP POST
+                            data: { 
+                                id_produit: id_produit, // ID du produit
+                                quantite: quantite,     // Quantité du produit
+                                _token: '{{ csrf_token("delete") }}' // Le token CSRF statique pour toutes les requêtes
+                            },
+                            dataType: 'json', // Type de données attendu en retour
+                            success: function(response) {
+                                if (response.success) {
+                                    location.reload();
+                                } else {
+                                    alert('Erreur: ' + response.error);
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                console.error(xhr.responseText);                                
+                            }
+                        });
+                    });
+                });
+        </script>
+    {% endblock %}
+
+{% endblock %}
