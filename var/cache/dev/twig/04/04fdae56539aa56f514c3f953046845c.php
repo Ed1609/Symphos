@@ -243,30 +243,21 @@ class __TwigTemplate_c076273a5810660e263d995631a48e47 extends Template
         // line 63
         if (((isset($context["total"]) || array_key_exists("total", $context) ? $context["total"] : (function () { throw new RuntimeError('Variable "total" does not exist.', 63, $this->source); })()) != 0)) {
             // line 64
-            yield "                        ";
-            if (((isset($context["wallet"]) || array_key_exists("wallet", $context) ? $context["wallet"] : (function () { throw new RuntimeError('Variable "wallet" does not exist.', 64, $this->source); })()) > (isset($context["total"]) || array_key_exists("total", $context) ? $context["total"] : (function () { throw new RuntimeError('Variable "total" does not exist.', 64, $this->source); })()))) {
-                // line 65
-                yield "                        <a href=\"";
-                yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("index.payment");
-                yield "\" class=\"btn btn-primary\">Passer à la caisse</a>
-                        ";
-            }
-            // line 67
             yield "                        <a href=\"";
             yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("index.payment");
             yield "\" class=\"btn btn-primary\">Passer à la caisse</a>
                     ";
         }
-        // line 69
+        // line 66
         yield "                </div>
             </div>
         </div>
     </div>
 
     ";
-        // line 74
+        // line 71
         yield from $this->unwrap()->yieldBlock('javascripts', $context, $blocks);
-        // line 112
+        // line 109
         yield "
 ";
         
@@ -278,7 +269,7 @@ class __TwigTemplate_c076273a5810660e263d995631a48e47 extends Template
         yield from [];
     }
 
-    // line 74
+    // line 71
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -291,7 +282,7 @@ class __TwigTemplate_c076273a5810660e263d995631a48e47 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 75
+        // line 72
         yield "        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js\"></script>
         <script src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>
         <script>
@@ -312,7 +303,7 @@ class __TwigTemplate_c076273a5810660e263d995631a48e47 extends Template
                                 id_produit: id_produit, // ID du produit
                                 quantite: quantite,     // Quantité du produit
                                 _token: '";
-        // line 94
+        // line 91
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken("delete"), "html", null, true);
         yield "' // Le token CSRF statique pour toutes les requêtes
                             },
@@ -362,7 +353,7 @@ class __TwigTemplate_c076273a5810660e263d995631a48e47 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  316 => 94,  295 => 75,  282 => 74,  270 => 112,  268 => 74,  261 => 69,  255 => 67,  249 => 65,  246 => 64,  244 => 63,  238 => 60,  233 => 57,  224 => 53,  214 => 48,  209 => 46,  205 => 45,  201 => 44,  197 => 43,  193 => 42,  190 => 41,  185 => 40,  161 => 18,  148 => 17,  135 => 14,  131 => 13,  127 => 12,  123 => 11,  119 => 10,  115 => 9,  111 => 8,  107 => 7,  102 => 6,  89 => 5,  66 => 3,  43 => 1,);
+        return array (  307 => 91,  286 => 72,  273 => 71,  261 => 109,  259 => 71,  252 => 66,  246 => 64,  244 => 63,  238 => 60,  233 => 57,  224 => 53,  214 => 48,  209 => 46,  205 => 45,  201 => 44,  197 => 43,  193 => 42,  190 => 41,  185 => 40,  161 => 18,  148 => 17,  135 => 14,  131 => 13,  127 => 12,  123 => 11,  119 => 10,  115 => 9,  111 => 8,  107 => 7,  102 => 6,  89 => 5,  66 => 3,  43 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -430,9 +421,6 @@ class __TwigTemplate_c076273a5810660e263d995631a48e47 extends Template
                     </div>
                 <div>
                     {% if total != 0 %}
-                        {% if wallet > total %}
-                        <a href=\"{{ path('index.payment') }}\" class=\"btn btn-primary\">Passer à la caisse</a>
-                        {% endif %}
                         <a href=\"{{ path('index.payment') }}\" class=\"btn btn-primary\">Passer à la caisse</a>
                     {% endif %}
                 </div>

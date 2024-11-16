@@ -35,6 +35,8 @@ class CartController extends AbstractController
     {
         $session = $request->getSession();
         $utilisateur = $session->get('utilisateur');
+        
+        $solde = $session->get('solde');
     
         if ($utilisateur) {
             $idUtilisateur = $utilisateur['idUtilisateur'];
@@ -58,7 +60,7 @@ class CartController extends AbstractController
             return $this->render('cart/index.html.twig', [
                 'cart' => $result,   // Données du panier
                 'total' => $total,   // Total calculé
-                'wallet'=>0,
+                'wallet'=>$solde,
             ]);
     
         } else {
