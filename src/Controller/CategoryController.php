@@ -7,14 +7,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ProductRepository;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CategoryController extends AbstractController
 {
     #[Route('/category/{category}', name: 'all-product', requirements: ['category' => '[a-zA-Z0-9\-]+'])]
-    public function index(EntityManagerInterface $em,ProductRepository $productRepository, Request $request,string $category = '')
+    public function index(SessionInterface $session,ProductRepository $productRepository, Request $request,string $category = '')
     {
         $produitsParPage = $request->query->getInt('produitsParPage', 10);
         $pageActuelle = $request->query->getInt('page', 1);
+        // Récupération de l'utilisateur depuis la session
+        $utilisateur = $session->get('utilisateur');
+        $idUtilisateur = $utilisateur['idUtilisateur'] ?? null;
     
         // Fetch total number of products
         $total = $productRepository->countAllProducts();
@@ -46,7 +50,8 @@ class CategoryController extends AbstractController
             'nombreDePages' => $nombreDePages,
             'pageActuelle' => $pageActuelle,
             'produitsParPage' => $produitsParPage,
-            'total' => $total
+            'total' => $total,
+            'user' => $idUtilisateur
         ]);
     }
 }

@@ -61,7 +61,11 @@
                     </div>
                 <div>
                     {% if total != 0 %}
-                        <a href="{{ path('index.payment') }}" class="btn btn-primary">Passer à la caisse</a>
+                        {% if total < wallet %}
+                            <a href="{{ path('app_walletpaie') }}" class="btn btn-primary">Effectuer l'achat</a>
+                            {% else %}
+                             <a href="{{ path('app.wallet') }}" class="btn btn-primary">Recharger Mon portefeuille</a>
+                        {% endif %}
                     {% endif %}
                 </div>
             </div>

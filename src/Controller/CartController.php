@@ -41,20 +41,28 @@ class CartController extends AbstractController
         if ($utilisateur) {
             $idUtilisateur = $utilisateur['idUtilisateur'];
     
+            $wallet = $walletRepository->findOneBy(['IdUtilisateur' => $idUtilisateur]);
+            $caisse = $wallet->getSolde();
+            $session->set('solde',$caisse);
+            
             // Récupère le panier de l'utilisateur
             $result = $cardRepository->getPanier($idUtilisateur);
+            /*
 
             $cart = array_map(function($prod) {
                 return $prod['productId'];
-            }, $result);
+            }, $result);*/
             
             $session = $request->getSession();
-            $session->set('cart',$cart);
+            $session->set('cart',$result);
+            
             // Calcule le total du panier
+            
             $total = array_reduce($result, function ($carry, $item) {
                 return $carry + ($item['productPrice'] * $item['totalQuantity']);
             }, 0);
 
+            
             $session->set('total',$total);
             // Passe les données au template
             return $this->render('cart/index.html.twig', [

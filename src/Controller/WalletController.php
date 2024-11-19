@@ -52,7 +52,7 @@ class WalletController extends AbstractController
     
             // Calcul du solde restant
             $reste = $solde - $total;
-    
+
             // Mise à jour du wallet
             $wallet->setSolde($reste);
             $wallet->setIdUtilisateur($idUtilisateur); // Redondant si déjà défini lors de la création
@@ -65,10 +65,11 @@ class WalletController extends AbstractController
             // Traitement du panier (cart) et mise à jour des cartes associées
             $cart = $session->get('cart', []);
     
-            foreach ($cart as $idProduit) {
+            foreach ($cart as $items) {
                 // Recherche de la carte associée au produit et à l'utilisateur
                 $card = $entityManager->getRepository(Card::class)->findOneBy([
-                    'idProduit' => $idProduit,
+                    'idProduit' => $items['productId'],
+                    'statut'=> 0,
                     'idUtilisateur' => $idUtilisateur
                 ]);
     
@@ -78,7 +79,7 @@ class WalletController extends AbstractController
                     $entityManager->flush();
                 } else {
                     // Log en cas de carte non trouvée
-                    error_log("Carte non trouvée pour le produit ID: $idProduit et l'utilisateur ID: $idUtilisateur");
+                    error_log("Carte non trouvée pour le produit ID: ".$items['productId']." et l'utilisateur ID: $idUtilisateur");
                 }
             }
     
@@ -99,6 +100,8 @@ class WalletController extends AbstractController
     }
 
     
+
+
 
     //Fonction pour crediter le wallet methode post
 
@@ -153,6 +156,8 @@ class WalletController extends AbstractController
         }
     }
 
+
+
     #[Route('/wallet', name: 'app.wallet')]
     function collecteur(SessionInterface $Session,Request $request)
     {
@@ -165,4 +170,5 @@ class WalletController extends AbstractController
 
        return $this->redirectToRoute('page.introuvable');
     }
+
 }

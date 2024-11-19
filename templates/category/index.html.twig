@@ -36,11 +36,13 @@
                         <div class="product-item men">
                             <div class="product discount product_filter">
                                 <div class="product_image">
+                                <a href="{{ path('product.show', {'slug':product.slug,'id': product.id}) }}">
                                     <img src="{{ asset(product.ImageUrl) }}" alt="{{ product.libele }}">
+                                </a>
                                 </div>
                                 <div class="product_info">
                                     <h6 class="product_name">
-                                        <a href="{{ path('product.show', {'slug':product.slug,'id': product.id}) }}">{{ product.libele }}</a>
+                                        {{ product.libele }}
                                     </h6>
                                     <div class="product_price">{{ product.discountPrice ? product.discountPrice : product.prix }}</div>
                                 </div>

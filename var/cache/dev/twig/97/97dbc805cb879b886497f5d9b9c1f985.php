@@ -195,25 +195,28 @@ class __TwigTemplate_bd61e73cdd27598e4469e542828d4add extends Template
             yield "                        <div class=\"product-item men\">
                             <div class=\"product discount product_filter\">
                                 <div class=\"product_image\">
-                                    <img src=\"";
+                                <a href=\"";
             // line 39
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(CoreExtension::getAttribute($this->env, $this->source, $context["product"], "ImageUrl", [], "any", false, false, false, 39)), "html", null, true);
-            yield "\" alt=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["product"], "libele", [], "any", false, false, false, 39), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("product.show", ["slug" => CoreExtension::getAttribute($this->env, $this->source, $context["product"], "slug", [], "any", false, false, false, 39), "id" => CoreExtension::getAttribute($this->env, $this->source, $context["product"], "id", [], "any", false, false, false, 39)]), "html", null, true);
             yield "\">
+                                    <img src=\"";
+            // line 40
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(CoreExtension::getAttribute($this->env, $this->source, $context["product"], "ImageUrl", [], "any", false, false, false, 40)), "html", null, true);
+            yield "\" alt=\"";
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["product"], "libele", [], "any", false, false, false, 40), "html", null, true);
+            yield "\">
+                                </a>
                                 </div>
                                 <div class=\"product_info\">
                                     <h6 class=\"product_name\">
-                                        <a href=\"";
-            // line 43
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("product.show", ["slug" => CoreExtension::getAttribute($this->env, $this->source, $context["product"], "slug", [], "any", false, false, false, 43), "id" => CoreExtension::getAttribute($this->env, $this->source, $context["product"], "id", [], "any", false, false, false, 43)]), "html", null, true);
-            yield "\">";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["product"], "libele", [], "any", false, false, false, 43), "html", null, true);
-            yield "</a>
+                                        ";
+            // line 45
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["product"], "libele", [], "any", false, false, false, 45), "html", null, true);
+            yield "
                                     </h6>
                                     <div class=\"product_price\">";
-            // line 45
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((CoreExtension::getAttribute($this->env, $this->source, $context["product"], "discountPrice", [], "any", false, false, false, 45)) ? (CoreExtension::getAttribute($this->env, $this->source, $context["product"], "discountPrice", [], "any", false, false, false, 45)) : (CoreExtension::getAttribute($this->env, $this->source, $context["product"], "prix", [], "any", false, false, false, 45))), "html", null, true);
+            // line 47
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(((CoreExtension::getAttribute($this->env, $this->source, $context["product"], "discountPrice", [], "any", false, false, false, 47)) ? (CoreExtension::getAttribute($this->env, $this->source, $context["product"], "discountPrice", [], "any", false, false, false, 47)) : (CoreExtension::getAttribute($this->env, $this->source, $context["product"], "prix", [], "any", false, false, false, 47))), "html", null, true);
             yield "</div>
                                 </div>
                             </div>
@@ -223,25 +226,25 @@ class __TwigTemplate_bd61e73cdd27598e4469e542828d4add extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['product'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 50
+        // line 52
         yield "                </div>
 
                 <!-- Pagination -->
                 <div class=\"pages d-flex flex-row align-items-center\">
                     <div class=\"page_current\">
                         <span>";
-        // line 55
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((isset($context["pageActuelle"]) || array_key_exists("pageActuelle", $context) ? $context["pageActuelle"] : (function () { throw new RuntimeError('Variable "pageActuelle" does not exist.', 55, $this->source); })()), "html", null, true);
+        // line 57
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((isset($context["pageActuelle"]) || array_key_exists("pageActuelle", $context) ? $context["pageActuelle"] : (function () { throw new RuntimeError('Variable "pageActuelle" does not exist.', 57, $this->source); })()), "html", null, true);
         yield "</span>
                         <ul class=\"page_selection\">
                             ";
-        // line 57
+        // line 59
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable(range(1, (isset($context["nombreDePages"]) || array_key_exists("nombreDePages", $context) ? $context["nombreDePages"] : (function () { throw new RuntimeError('Variable "nombreDePages" does not exist.', 57, $this->source); })())));
+        $context['_seq'] = CoreExtension::ensureTraversable(range(1, (isset($context["nombreDePages"]) || array_key_exists("nombreDePages", $context) ? $context["nombreDePages"] : (function () { throw new RuntimeError('Variable "nombreDePages" does not exist.', 59, $this->source); })())));
         foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
-            // line 58
+            // line 60
             yield "                                <li><a href=\"";
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("all-product", ["category" => (isset($context["category"]) || array_key_exists("category", $context) ? $context["category"] : (function () { throw new RuntimeError('Variable "category" does not exist.', 58, $this->source); })()), "page" => $context["i"]]), "html", null, true);
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("all-product", ["category" => (isset($context["category"]) || array_key_exists("category", $context) ? $context["category"] : (function () { throw new RuntimeError('Variable "category" does not exist.', 60, $this->source); })()), "page" => $context["i"]]), "html", null, true);
             yield "\">";
             yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($context["i"], "html", null, true);
             yield "</a></li>
@@ -250,28 +253,28 @@ class __TwigTemplate_bd61e73cdd27598e4469e542828d4add extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['i'], $context['_parent']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 60
+        // line 62
         yield "                        </ul>
                     </div>
                     <div class=\"page_total\"><span>de</span> ";
-        // line 62
-        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((isset($context["nombreDePages"]) || array_key_exists("nombreDePages", $context) ? $context["nombreDePages"] : (function () { throw new RuntimeError('Variable "nombreDePages" does not exist.', 62, $this->source); })()), "html", null, true);
+        // line 64
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape((isset($context["nombreDePages"]) || array_key_exists("nombreDePages", $context) ? $context["nombreDePages"] : (function () { throw new RuntimeError('Variable "nombreDePages" does not exist.', 64, $this->source); })()), "html", null, true);
         yield "</div>
                     ";
-        // line 63
-        if (((isset($context["pageActuelle"]) || array_key_exists("pageActuelle", $context) ? $context["pageActuelle"] : (function () { throw new RuntimeError('Variable "pageActuelle" does not exist.', 63, $this->source); })()) < (isset($context["nombreDePages"]) || array_key_exists("nombreDePages", $context) ? $context["nombreDePages"] : (function () { throw new RuntimeError('Variable "nombreDePages" does not exist.', 63, $this->source); })()))) {
-            // line 64
+        // line 65
+        if (((isset($context["pageActuelle"]) || array_key_exists("pageActuelle", $context) ? $context["pageActuelle"] : (function () { throw new RuntimeError('Variable "pageActuelle" does not exist.', 65, $this->source); })()) < (isset($context["nombreDePages"]) || array_key_exists("nombreDePages", $context) ? $context["nombreDePages"] : (function () { throw new RuntimeError('Variable "nombreDePages" does not exist.', 65, $this->source); })()))) {
+            // line 66
             yield "                        <div class=\"page_next\">
                             <a href=\"";
-            // line 65
-            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("all-product", ["category" => (isset($context["category"]) || array_key_exists("category", $context) ? $context["category"] : (function () { throw new RuntimeError('Variable "category" does not exist.', 65, $this->source); })()), "page" => ((isset($context["pageActuelle"]) || array_key_exists("pageActuelle", $context) ? $context["pageActuelle"] : (function () { throw new RuntimeError('Variable "pageActuelle" does not exist.', 65, $this->source); })()) + 1)]), "html", null, true);
+            // line 67
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("all-product", ["category" => (isset($context["category"]) || array_key_exists("category", $context) ? $context["category"] : (function () { throw new RuntimeError('Variable "category" does not exist.', 67, $this->source); })()), "page" => ((isset($context["pageActuelle"]) || array_key_exists("pageActuelle", $context) ? $context["pageActuelle"] : (function () { throw new RuntimeError('Variable "pageActuelle" does not exist.', 67, $this->source); })()) + 1)]), "html", null, true);
             yield "\">
                                 <i class=\"fa fa-long-arrow-right\" aria-hidden=\"true\"></i>
                             </a>
                         </div>
                     ";
         }
-        // line 70
+        // line 72
         yield "                </div>
             </div>
         </div>
@@ -287,7 +290,7 @@ class __TwigTemplate_bd61e73cdd27598e4469e542828d4add extends Template
         yield from [];
     }
 
-    // line 76
+    // line 78
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -300,36 +303,36 @@ class __TwigTemplate_bd61e73cdd27598e4469e542828d4add extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 77
+        // line 79
         yield "    <script src=\"";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery-3.2.1.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 78
+        // line 80
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("styles/bootstrap4/popper.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 79
+        // line 81
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("styles/bootstrap4/bootstrap.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 80
+        // line 82
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("plugins/Isotope/isotope.pkgd.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 81
+        // line 83
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("plugins/OwlCarousel2-2.2.1/owl.carousel.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 82
+        // line 84
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("plugins/easing/easing.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 83
+        // line 85
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("plugins/jquery-ui-1.12.1.custom/jquery-ui.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 84
+        // line 86
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/categories_custom.js"), "html", null, true);
         yield "\"></script>
 ";
@@ -363,7 +366,7 @@ class __TwigTemplate_bd61e73cdd27598e4469e542828d4add extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  333 => 84,  329 => 83,  325 => 82,  321 => 81,  317 => 80,  313 => 79,  309 => 78,  304 => 77,  291 => 76,  275 => 70,  267 => 65,  264 => 64,  262 => 63,  258 => 62,  254 => 60,  243 => 58,  239 => 57,  234 => 55,  227 => 50,  216 => 45,  209 => 43,  200 => 39,  195 => 36,  191 => 35,  180 => 27,  176 => 26,  171 => 24,  162 => 17,  149 => 16,  136 => 13,  132 => 12,  128 => 11,  124 => 10,  120 => 9,  116 => 8,  112 => 7,  108 => 6,  103 => 5,  90 => 4,  66 => 3,  43 => 1,);
+        return array (  336 => 86,  332 => 85,  328 => 84,  324 => 83,  320 => 82,  316 => 81,  312 => 80,  307 => 79,  294 => 78,  278 => 72,  270 => 67,  267 => 66,  265 => 65,  261 => 64,  257 => 62,  246 => 60,  242 => 59,  237 => 57,  230 => 52,  219 => 47,  214 => 45,  204 => 40,  200 => 39,  195 => 36,  191 => 35,  180 => 27,  176 => 26,  171 => 24,  162 => 17,  149 => 16,  136 => 13,  132 => 12,  128 => 11,  124 => 10,  120 => 9,  116 => 8,  112 => 7,  108 => 6,  103 => 5,  90 => 4,  66 => 3,  43 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -406,11 +409,13 @@ class __TwigTemplate_bd61e73cdd27598e4469e542828d4add extends Template
                         <div class=\"product-item men\">
                             <div class=\"product discount product_filter\">
                                 <div class=\"product_image\">
+                                <a href=\"{{ path('product.show', {'slug':product.slug,'id': product.id}) }}\">
                                     <img src=\"{{ asset(product.ImageUrl) }}\" alt=\"{{ product.libele }}\">
+                                </a>
                                 </div>
                                 <div class=\"product_info\">
                                     <h6 class=\"product_name\">
-                                        <a href=\"{{ path('product.show', {'slug':product.slug,'id': product.id}) }}\">{{ product.libele }}</a>
+                                        {{ product.libele }}
                                     </h6>
                                     <div class=\"product_price\">{{ product.discountPrice ? product.discountPrice : product.prix }}</div>
                                 </div>
