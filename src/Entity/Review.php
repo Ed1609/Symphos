@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ReviewRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\DBAL\Types\Types;
 
 #[ORM\Entity(repositoryClass: ReviewRepository::class)]
 class Review
@@ -13,8 +14,9 @@ class Review
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $UserId = null;
+    #[ORM\ManyToOne(targetEntity: "App\Entity\Utilisateur")]
+    #[ORM\JoinColumn(name: "user_id", referencedColumnName: "id", nullable: false)]
+    private ?Utilisateur $user = null;
 
     #[ORM\Column]
     private ?int $IdProduit = null;
@@ -22,25 +24,30 @@ class Review
     #[ORM\Column(length: 255)]
     private ?string $content = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $CreatedAt = null;
+    #[ORM\Column(type: 'datetime_immutable')]
+    private $createdAt;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable(); // Initialisation de la date à la création
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUserId(): ?int
+    public function getUser(): ?Utilisateur
     {
-        return $this->UserId;
+        return $this->user;
     }
 
-    public function setUserId(int $UserId): static
+    public function setUser(?Utilisateur $user): self
     {
-        $this->UserId = $UserId;
-
+        $this->user = $user;
         return $this;
     }
+
 
     public function getIdProduit(): ?int
     {
@@ -68,13 +75,12 @@ class Review
 
     public function getCreatedAt(): ?\DateTimeImmutable
     {
-        return $this->CreatedAt;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $CreatedAt): static
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
-        $this->CreatedAt = $CreatedAt;
-
+        $this->createdAt = $createdAt;
         return $this;
     }
 }

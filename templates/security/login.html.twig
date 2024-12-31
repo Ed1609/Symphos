@@ -6,7 +6,8 @@
 <div class="container mt-5" style="padding: 150px;">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form method="post">
+        <div id="errorContainer" class="alert alert-danger" style="display: none;"></div>
+            <form id="loginForm" method="post">
                 {% for label, messages in app.flashes %}
                     {% for message in messages %}
                         <div class="alert alert-{{ label }}">
@@ -43,10 +44,16 @@
                 </div>
 
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
-                    Sign in
+                    Se connecter
                 </button>
             </form>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    <script src="{{asset('js/login_check.js')}}"></script>
+
 {% endblock %}

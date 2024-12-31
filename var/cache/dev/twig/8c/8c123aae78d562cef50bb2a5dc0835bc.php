@@ -459,95 +459,73 @@ class __TwigTemplate_3d3aec000c2e3e8806fe8632cf473a06 extends Template
             </div>
         </div>
 
-\t\t\t\t\t<!-- Tab Reviews -->
+\t\t<!-- Tab Reviews -->
+                <div id=\"tab_3\" class=\"tab_container\">
+                    <div class=\"row\">
 
-\t\t\t\t\t<div id=\"tab_3\" class=\"tab_container\">
-\t\t\t\t\t\t<div class=\"row\">
+                        <!-- User Reviews -->
+                        <div class=\"col-lg-6 reviews_col\">
+                            <div class=\"tab_title reviews_title\">
+                                <h4>Commentaires</h4>
+                            </div>
+                            <!-- Liste des avis existants -->
+                            <div id=\"reviews_list\">
+                                <!-- Exemple d'avis existants -->
+                                ";
+        // line 220
+        $context['_parent'] = $context;
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["reviews"]) || array_key_exists("reviews", $context) ? $context["reviews"] : (function () { throw new RuntimeError('Variable "reviews" does not exist.', 220, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["item"]) {
+            // line 221
+            yield "                                    <div class=\"user_review_container d-flex flex-column flex-sm-row\">
+                                        <div class=\"review\">
+                                            <div class=\"review_date\">";
+            // line 223
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, $context["item"], "createdAt", [], "any", false, false, false, 223), "d M Y"), "html", null, true);
+            yield "</div>
+                                            <div class=\"user_name\">";
+            // line 224
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["item"], "username", [], "any", false, false, false, 224), "html", null, true);
+            yield "</div>
+                                            <p>";
+            // line 225
+            yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["item"], "content", [], "any", false, false, false, 225), "html", null, true);
+            yield "</p>
+                                        </div>
+                                    </div>
+                                ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_key'], $context['item'], $context['_parent']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 229
+        yield "                            </div>
+                        </div>
 
-\t\t\t\t\t\t\t<!-- User Reviews -->
+                        <!-- Add Review -->
+                        <div class=\"col-lg-6 add_review_col\">
+                            <div class=\"add_review\">
+                                <form id=\"review_form\" action=\"";
+        // line 235
+        yield $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("add_review");
+        yield "\" method=\"POST\">
+                                    <div>
+                                        <h1>Laisser un commentaire: </h1>
+                                        <textarea id=\"review_message\" class=\"input_review\" name=\"message\" placeholder=\"Votre commentaire\" rows=\"4\" required data-error=\"Please, leave us a review.\"></textarea>
+                                        <input type=\"number\" name=\"IdProduit\" id=\"IdProduit\" value=\"";
+        // line 239
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatNumber(CoreExtension::getAttribute($this->env, $this->source, (isset($context["instance"]) || array_key_exists("instance", $context) ? $context["instance"] : (function () { throw new RuntimeError('Variable "instance" does not exist.', 239, $this->source); })()), "id", [], "any", false, false, false, 239), 0, ".", ""), "html", null, true);
+        yield "\" hidden>
+                                    </div>
+                                    <div class=\"text-left text-sm-right\">
+                                        <button id=\"review_submit\" type=\"submit\" class=\"red_button review_submit_btn trans_300\" value=\"Submit\">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
 
-\t\t\t\t\t\t\t<div class=\"col-lg-6 reviews_col\">
-\t\t\t\t\t\t\t\t<div class=\"tab_title reviews_title\">
-\t\t\t\t\t\t\t\t\t<h4>Reviews (2)</h4>
-\t\t\t\t\t\t\t\t</div>
-
-\t\t\t\t\t\t\t\t<!-- User Review -->
-
-\t\t\t\t\t\t\t\t<div class=\"user_review_container d-flex flex-column flex-sm-row\">
-\t\t\t\t\t\t\t\t\t<div class=\"user\">
-\t\t\t\t\t\t\t\t\t\t<div class=\"user_pic\"></div>
-\t\t\t\t\t\t\t\t\t\t<div class=\"user_rating\">
-\t\t\t\t\t\t\t\t\t\t\t<ul class=\"star_rating\">
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t<div class=\"review\">
-\t\t\t\t\t\t\t\t\t\t<div class=\"review_date\">27 Aug 2016</div>
-\t\t\t\t\t\t\t\t\t\t<div class=\"user_name\">Brandon William</div>
-\t\t\t\t\t\t\t\t\t\t<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t</div>
-
-\t\t\t\t\t\t\t\t<!-- User Review -->
-
-\t\t\t\t\t\t\t\t<div class=\"user_review_container d-flex flex-column flex-sm-row\">
-\t\t\t\t\t\t\t\t\t<div class=\"user\">
-\t\t\t\t\t\t\t\t\t\t<div class=\"user_pic\"></div>
-\t\t\t\t\t\t\t\t\t\t<div class=\"user_rating\">
-\t\t\t\t\t\t\t\t\t\t\t<ul class=\"star_rating\">
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t<div class=\"review\">
-\t\t\t\t\t\t\t\t\t\t<div class=\"review_date\">27 Aug 2016</div>
-\t\t\t\t\t\t\t\t\t\t<div class=\"user_name\">Brandon William</div>
-\t\t\t\t\t\t\t\t\t\t<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
-
-\t\t\t\t\t\t\t<!-- Add Review -->
-
-\t\t\t\t\t\t\t<div class=\"col-lg-6 add_review_col\">
-
-\t\t\t\t\t\t\t\t<div class=\"add_review\">
-\t\t\t\t\t\t\t\t\t<form id=\"review_form\" action=\"post\">
-\t\t\t\t\t\t\t\t\t\t<div>
-\t\t\t\t\t\t\t\t\t\t\t<h1>Add Review</h1>
-\t\t\t\t\t\t\t\t\t\t\t<input id=\"review_name\" class=\"form_input input_name\" type=\"text\" name=\"name\" placeholder=\"Name*\" required=\"required\" data-error=\"Name is required.\">
-\t\t\t\t\t\t\t\t\t\t\t<input id=\"review_email\" class=\"form_input input_email\" type=\"email\" name=\"email\" placeholder=\"Email*\" required=\"required\" data-error=\"Valid email is required.\">
-\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t<div>
-\t\t\t\t\t\t\t\t\t\t\t<h1>Your Rating:</h1>
-\t\t\t\t\t\t\t\t\t\t\t<ul class=\"user_star_rating\">
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t\t\t\t\t<textarea id=\"review_message\" class=\"input_review\" name=\"message\"  placeholder=\"Your Review\" rows=\"4\" required data-error=\"Please, leave us a review.\"></textarea>
-\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t<div class=\"text-left text-sm-right\">
-\t\t\t\t\t\t\t\t\t\t\t<button id=\"review_submit\" type=\"submit\" class=\"red_button review_submit_btn trans_300\" value=\"Submit\">submit</button>
-\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t</form>
-\t\t\t\t\t\t\t\t</div>
-
-\t\t\t\t\t\t\t</div>
-
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
+                    </div>
+                </div>
 
 \t\t\t\t</div>
 \t\t\t</div>
@@ -563,7 +541,7 @@ class __TwigTemplate_3d3aec000c2e3e8806fe8632cf473a06 extends Template
         yield from [];
     }
 
-    // line 304
+    // line 257
     /**
      * @return iterable<null|scalar|\Stringable>
      */
@@ -576,38 +554,43 @@ class __TwigTemplate_3d3aec000c2e3e8806fe8632cf473a06 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 305
+        // line 258
         yield "    <script src=\"";
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/jquery-3.2.1.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 306
+        // line 259
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("styles/bootstrap4/popper.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 307
+        // line 260
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("styles/bootstrap4/bootstrap.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 308
+        // line 261
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("plugins/Isotope/isotope.pkgd.min.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 309
+        // line 262
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("plugins/OwlCarousel2-2.2.1/owl.carousel.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 310
+        // line 263
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("plugins/easing/easing.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 311
+        // line 264
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("plugins/jquery-ui-1.12.1.custom/jquery-ui.js"), "html", null, true);
         yield "\"></script>
     <script src=\"";
-        // line 312
+        // line 265
         yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/single_custom.js"), "html", null, true);
         yield "\"></script>
+    <script src=\"";
+        // line 266
+        yield $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/comments.js"), "html", null, true);
+        yield "\"></script>
+
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -639,7 +622,7 @@ class __TwigTemplate_3d3aec000c2e3e8806fe8632cf473a06 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  609 => 312,  605 => 311,  601 => 310,  597 => 309,  593 => 308,  589 => 307,  585 => 306,  580 => 305,  567 => 304,  456 => 203,  452 => 202,  434 => 189,  428 => 186,  424 => 185,  416 => 182,  408 => 177,  404 => 176,  396 => 173,  390 => 170,  386 => 169,  352 => 137,  346 => 134,  343 => 133,  316 => 109,  310 => 106,  300 => 99,  296 => 98,  292 => 97,  282 => 90,  279 => 89,  277 => 88,  248 => 62,  244 => 61,  236 => 56,  232 => 55,  220 => 46,  207 => 40,  199 => 39,  191 => 38,  172 => 24,  168 => 23,  161 => 18,  148 => 17,  135 => 14,  131 => 13,  127 => 12,  123 => 11,  119 => 10,  115 => 9,  111 => 8,  107 => 7,  102 => 6,  89 => 5,  66 => 3,  43 => 1,);
+        return array (  591 => 266,  587 => 265,  583 => 264,  579 => 263,  575 => 262,  571 => 261,  567 => 260,  563 => 259,  558 => 258,  545 => 257,  517 => 239,  510 => 235,  502 => 229,  492 => 225,  488 => 224,  484 => 223,  480 => 221,  476 => 220,  456 => 203,  452 => 202,  434 => 189,  428 => 186,  424 => 185,  416 => 182,  408 => 177,  404 => 176,  396 => 173,  390 => 170,  386 => 169,  352 => 137,  346 => 134,  343 => 133,  316 => 109,  310 => 106,  300 => 99,  296 => 98,  292 => 97,  282 => 90,  279 => 89,  277 => 88,  248 => 62,  244 => 61,  236 => 56,  232 => 55,  220 => 46,  207 => 40,  199 => 39,  191 => 38,  172 => 24,  168 => 23,  161 => 18,  148 => 17,  135 => 14,  131 => 13,  127 => 12,  123 => 11,  119 => 10,  115 => 9,  111 => 8,  107 => 7,  102 => 6,  89 => 5,  66 => 3,  43 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -851,95 +834,48 @@ class __TwigTemplate_3d3aec000c2e3e8806fe8632cf473a06 extends Template
             </div>
         </div>
 
-\t\t\t\t\t<!-- Tab Reviews -->
+\t\t<!-- Tab Reviews -->
+                <div id=\"tab_3\" class=\"tab_container\">
+                    <div class=\"row\">
 
-\t\t\t\t\t<div id=\"tab_3\" class=\"tab_container\">
-\t\t\t\t\t\t<div class=\"row\">
+                        <!-- User Reviews -->
+                        <div class=\"col-lg-6 reviews_col\">
+                            <div class=\"tab_title reviews_title\">
+                                <h4>Commentaires</h4>
+                            </div>
+                            <!-- Liste des avis existants -->
+                            <div id=\"reviews_list\">
+                                <!-- Exemple d'avis existants -->
+                                {% for item in reviews %}
+                                    <div class=\"user_review_container d-flex flex-column flex-sm-row\">
+                                        <div class=\"review\">
+                                            <div class=\"review_date\">{{ item.createdAt|date('d M Y') }}</div>
+                                            <div class=\"user_name\">{{item.username}}</div>
+                                            <p>{{item.content}}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
 
-\t\t\t\t\t\t\t<!-- User Reviews -->
+                        <!-- Add Review -->
+                        <div class=\"col-lg-6 add_review_col\">
+                            <div class=\"add_review\">
+                                <form id=\"review_form\" action=\"{{ path('add_review') }}\" method=\"POST\">
+                                    <div>
+                                        <h1>Laisser un commentaire: </h1>
+                                        <textarea id=\"review_message\" class=\"input_review\" name=\"message\" placeholder=\"Votre commentaire\" rows=\"4\" required data-error=\"Please, leave us a review.\"></textarea>
+                                        <input type=\"number\" name=\"IdProduit\" id=\"IdProduit\" value=\"{{ instance.id|number_format(0, '.', '') }}\" hidden>
+                                    </div>
+                                    <div class=\"text-left text-sm-right\">
+                                        <button id=\"review_submit\" type=\"submit\" class=\"red_button review_submit_btn trans_300\" value=\"Submit\">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
 
-\t\t\t\t\t\t\t<div class=\"col-lg-6 reviews_col\">
-\t\t\t\t\t\t\t\t<div class=\"tab_title reviews_title\">
-\t\t\t\t\t\t\t\t\t<h4>Reviews (2)</h4>
-\t\t\t\t\t\t\t\t</div>
-
-\t\t\t\t\t\t\t\t<!-- User Review -->
-
-\t\t\t\t\t\t\t\t<div class=\"user_review_container d-flex flex-column flex-sm-row\">
-\t\t\t\t\t\t\t\t\t<div class=\"user\">
-\t\t\t\t\t\t\t\t\t\t<div class=\"user_pic\"></div>
-\t\t\t\t\t\t\t\t\t\t<div class=\"user_rating\">
-\t\t\t\t\t\t\t\t\t\t\t<ul class=\"star_rating\">
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t<div class=\"review\">
-\t\t\t\t\t\t\t\t\t\t<div class=\"review_date\">27 Aug 2016</div>
-\t\t\t\t\t\t\t\t\t\t<div class=\"user_name\">Brandon William</div>
-\t\t\t\t\t\t\t\t\t\t<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t</div>
-
-\t\t\t\t\t\t\t\t<!-- User Review -->
-
-\t\t\t\t\t\t\t\t<div class=\"user_review_container d-flex flex-column flex-sm-row\">
-\t\t\t\t\t\t\t\t\t<div class=\"user\">
-\t\t\t\t\t\t\t\t\t\t<div class=\"user_pic\"></div>
-\t\t\t\t\t\t\t\t\t\t<div class=\"user_rating\">
-\t\t\t\t\t\t\t\t\t\t\t<ul class=\"star_rating\">
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t<div class=\"review\">
-\t\t\t\t\t\t\t\t\t\t<div class=\"review_date\">27 Aug 2016</div>
-\t\t\t\t\t\t\t\t\t\t<div class=\"user_name\">Brandon William</div>
-\t\t\t\t\t\t\t\t\t\t<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t</div>
-
-\t\t\t\t\t\t\t<!-- Add Review -->
-
-\t\t\t\t\t\t\t<div class=\"col-lg-6 add_review_col\">
-
-\t\t\t\t\t\t\t\t<div class=\"add_review\">
-\t\t\t\t\t\t\t\t\t<form id=\"review_form\" action=\"post\">
-\t\t\t\t\t\t\t\t\t\t<div>
-\t\t\t\t\t\t\t\t\t\t\t<h1>Add Review</h1>
-\t\t\t\t\t\t\t\t\t\t\t<input id=\"review_name\" class=\"form_input input_name\" type=\"text\" name=\"name\" placeholder=\"Name*\" required=\"required\" data-error=\"Name is required.\">
-\t\t\t\t\t\t\t\t\t\t\t<input id=\"review_email\" class=\"form_input input_email\" type=\"email\" name=\"email\" placeholder=\"Email*\" required=\"required\" data-error=\"Valid email is required.\">
-\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t<div>
-\t\t\t\t\t\t\t\t\t\t\t<h1>Your Rating:</h1>
-\t\t\t\t\t\t\t\t\t\t\t<ul class=\"user_star_rating\">
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t\t<li><i class=\"fa fa-star-o\" aria-hidden=\"true\"></i></li>
-\t\t\t\t\t\t\t\t\t\t\t</ul>
-\t\t\t\t\t\t\t\t\t\t\t<textarea id=\"review_message\" class=\"input_review\" name=\"message\"  placeholder=\"Your Review\" rows=\"4\" required data-error=\"Please, leave us a review.\"></textarea>
-\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t\t<div class=\"text-left text-sm-right\">
-\t\t\t\t\t\t\t\t\t\t\t<button id=\"review_submit\" type=\"submit\" class=\"red_button review_submit_btn trans_300\" value=\"Submit\">submit</button>
-\t\t\t\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t\t\t</form>
-\t\t\t\t\t\t\t\t</div>
-
-\t\t\t\t\t\t\t</div>
-
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
+                    </div>
+                </div>
 
 \t\t\t\t</div>
 \t\t\t</div>
@@ -956,6 +892,8 @@ class __TwigTemplate_3d3aec000c2e3e8806fe8632cf473a06 extends Template
     <script src=\"{{ asset('plugins/easing/easing.js') }}\"></script>
     <script src=\"{{ asset('plugins/jquery-ui-1.12.1.custom/jquery-ui.js') }}\"></script>
     <script src=\"{{ asset('js/single_custom.js') }}\"></script>
+    <script src=\"{{asset('js/comments.js')}}\"></script>
+
 {% endblock %}
 ", "product/index.html.twig", "/home/ghost/Documents/Documents/Projet/Alex/formulaire/templates/product/index.html.twig");
     }

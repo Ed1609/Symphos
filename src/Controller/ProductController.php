@@ -8,15 +8,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use App\Repository\ReviewRepository;
 
 class ProductController extends AbstractController
 {
     #[Route('/product/{slug}-{id}', name: 'product.show', requirements: ['id' => '\d+', 'slug' => '[a-zA-Z0-9\-]+'])]
-    public function index(ProductRepository $productRepository, Request $request, int $id, string $slug, SessionInterface $session): Response
+    public function index(ProductRepository $productRepository,ReviewRepository $reviewRepository, Request $request, int $id, string $slug, SessionInterface $session): Response
     {
         // Récupération du produit par ID
         $product = $productRepository->find($id);
-        //dd($product);
+        $reviews = $reviewRepository -> findReviewsWithUserNames($id);
+        //dd($reviews);
 
         // Vérification si le produit existe
         if (!$product) {
@@ -39,6 +41,7 @@ class ProductController extends AbstractController
         return $this->render('product/index.html.twig', [
             'instance' => $product,
             'user' => $idUtilisateur,
+            'reviews' => $reviews,
         ]);
     }
 }

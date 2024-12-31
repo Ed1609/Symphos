@@ -29,6 +29,7 @@ return [
         '/paiement' => [[['_route' => 'index.payment', '_controller' => 'App\\Controller\\PaymentController::index'], null, null, null, false, false, null]],
         '/page_introuvable' => [[['_route' => 'page.introuvable', '_controller' => 'App\\Controller\\PaymentController::pageIntrouvable'], null, null, null, false, false, null]],
         '/payment_process' => [[['_route' => 'process.payment', '_controller' => 'App\\Controller\\PaymentController::makePayment'], null, ['POST' => 0], null, false, false, null]],
+        '/review' => [[['_route' => 'add_review', '_controller' => 'App\\Controller\\ReviewController::index'], null, ['POST' => 0], null, false, false, null]],
         '/login' => [[['_route' => 'l_ogin', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
         '/profil' => [[['_route' => 'profil', '_controller' => 'App\\Controller\\UserController::index'], null, null, null, false, false, null]],

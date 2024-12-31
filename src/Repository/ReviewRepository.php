@@ -16,28 +16,18 @@ class ReviewRepository extends ServiceEntityRepository
         parent::__construct($registry, Review::class);
     }
 
-    //    /**
-    //     * @return Review[] Returns an array of Review objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('r')
-    //            ->andWhere('r.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('r.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
 
-    //    public function findOneBySomeField($value): ?Review
-    //    {
-    //        return $this->createQueryBuilder('r')
-    //            ->andWhere('r.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    public function findReviewsWithUserNames(int $productId): array
+    {
+        return $this->createQueryBuilder('r')
+        ->select('r.createdAt AS createdAt', 'r.content AS content', 'u.prenom AS username') // Champs nécessaires
+        ->innerJoin('r.user', 'u')  // Relation avec l'utilisateur
+        ->where('r.IdProduit = :productId') // Filtrer par produit
+        ->setParameter('productId', $productId)
+        ->orderBy('r.createdAt', 'DESC') // Trier par date (plus récent en premier)
+        ->setMaxResults(2) // Limiter le nombre de résultats
+        ->getQuery()
+        ->getResult();
+    }
 }
+    
